@@ -1,0 +1,23 @@
+{
+  "header": {
+    "pack_id": "ee649bcf-256c-4013-9068-6a802b89d756",
+    "name": "resourcePack.vanilla_server.name",
+    "packs_version": "0.0.1",
+    "modules": [
+      {
+        "description": "resourcePack.vanilla_server.description",
+        "version": "0.0.1",
+        "uuid": "fa6e90c8-c925-460f-8155-c8a60b753caa",
+        "type": "data"
+      }
+    ],
+    "dependencies": [
+      {
+        "description": "resourcePack.vanilla.description",
+        "version": "0.0.1",
+        "uuid": "743f6949-53be-44b6-b326-398005028819",
+        "type": "resources"
+      }
+    ]
+  }
+}

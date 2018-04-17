@@ -1,0 +1,17 @@
+{
+   "format_version" : 1,
+   "header" : {
+      "description" : "rainbowsheep.header.description",
+      "name" : "Rainbowsheep.header.name",
+      "uuid" : "2F2D6DF0-54B6-4FDB-9D09-49F2165AD094",
+      "version" : [ 0, 0, 1 ]
+   },
+   "modules" : [
+      {
+         "description" : "rainbowsheep.modules.description",
+         "type" : "resources",
+         "uuid" : "E95F7FD5-B578-4780-8E25-177CDFF90CAE",
+         "version" : [ 0, 0, 1 ]
+      }
+   ]
+}
