@@ -1,0 +1,27 @@
+{
+  "randomize": [
+              {
+                "weight": 100,
+                "add": {
+                  "component_groups": [
+                    "minecraft:sheep_white",
+                    "minecraft:sheep_orange",
+                    "minecraft:sheep_magenta",
+                    "minecraft:sheep_light_blue",
+                    "minecraft:sheep_yellow",
+                    "minecraft:sheep_lime",
+                    "minecraft:sheep_pink",
+                    "minecraft:sheep_gray",
+                    "minecraft:sheep_light_gray",
+                    "minecraft:sheep_cyan",
+                    "minecraft:sheep_purple",
+                    "minecraft:sheep_blue",
+                    "minecraft:sheep_brown",
+                    "minecraft:sheep_green",
+                    "minecraft:sheep_red",
+                    "minecraft:sheep_black"
+                  ]
+                }
+              }
+            ]
+}
