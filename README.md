@@ -4,14 +4,12 @@ This repository is primarily a snapshot storage of the versioned vanilla add-on 
 These are all for mcpe. AKA Bedrock.
 
 
-
-
-\pack-archives - A stored copy of add-on packs as downloaded from minecraft.net.
+\pack-archives - A stored copy of the vanilla add-on packs as downloaded from minecraft.net.
 		The direct links to the current version of the vanilla files are: 
      		https://aka.ms/resourcepacktemplate
      		https://aka.ms/behaviorpacktemplate
 
-    0.16   - todo - look up date
+    0.16   - Downloaded Octover 31st 2016
 	1.0    - Downloaded January 30th 2017
 	1.0.4  - Downloaded May 2017
 	1.2.6  - Downloaded December 2017
