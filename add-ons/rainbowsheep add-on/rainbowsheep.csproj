@@ -58,7 +58,6 @@
     </Content>
     <None Include="d3\flare.json" />
     <None Include="d3\items.json" />
-    <None Include="deploy.bat" />
     <None Include="resource_packs\rainbowsheep\pack_manifest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
