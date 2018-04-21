@@ -1,0 +1,29 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "random_chance_with_looting",
+          "chance": 0.01
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
