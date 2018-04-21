@@ -1,4 +1,4 @@
-# mcw10e-add-ons
+# mc-add-ons
 
 This repository is primarily a snapshot storage of the versioned vanilla add-on source files from mojang at minecraft.net
 These are all for mcpe. AKA Bedrock.
