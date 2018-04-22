@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:hopper_active": {
@@ -24,10 +24,10 @@
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:minecarthopper"
+        "id": "minecraft:hopper_minecart"
       },
       "minecraft:type_family": {
-        "family": [ "minecart" ]
+        "family": [ "minecart", "inanimate" ]
       },
       "minecraft:collision_box": {
         "width": 0.98,
@@ -42,7 +42,8 @@
         "can_be_siphoned_from": true
       },
       "minecraft:is_stackable": {
-        "value": true
+      },
+	    "minecraft:physics": {
       }
     },
 

@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:golem_leashed": {
@@ -13,11 +13,11 @@
         "minecraft:behavior.hurt_by_target": {
           "priority": 2,
           "entity_types": {
-            "filters": {
-              "other_without_families": [
-                "creeper",
-                "player"
-              ]
+            "filters": { 
+                "all_of": [
+                  { "test" :  "is_family", "subject" : "other", "operator": "!=", "value" :  "player"},
+                  { "test" :  "is_family", "subject" : "other", "operator": "!=", "value" :  "creeper"}
+                ] 
             }
           }
         }
@@ -25,23 +25,13 @@
       "minecraft:village_created": {
         "minecraft:behavior.defend_village_target": {
           "priority": 1
-        },
-        "minecraft:behavior.hurt_by_target": {
-          "priority": 2,
-          "entity_types": {
-            "filters": {
-              "other_without_families": [
-                "creeper"
-              ]
-            }
-          }
         }
       }
     },
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:irongolem"
+        "id": "minecraft:iron_golem"
       },
       "minecraft:type_family": {
         "family": [ "irongolem" ]
@@ -61,6 +51,18 @@
       },
       "minecraft:movement": {
         "value": 0.25
+      },
+      "minecraft:navigation.walk": {
+        "can_float": false,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+        
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
       },
       "minecraft:attack": {
         "damage": {
@@ -112,7 +114,7 @@
       "minecraft:behavior.random_stroll": {
         "priority": 6,
         "speed_multiplier": 1,
-        "xz_dist": 0.6
+        "xz_dist": 16
       },
       "minecraft:behavior.look_at_player": {
         "priority": 7,
@@ -126,15 +128,25 @@
         "priority": 3,
         "entity_types": [
           {
-            "filters": {
-              "other_with_families": "monster",
-              "other_without_families": "creeper"
+            "filters": { 
+                "all_of": [
+                  { "test" :  "is_family", "subject" : "other", "value" :  "monster"},
+                  { "test" :  "is_family", "subject" : "other", "operator": "!=", "value" :  "creeper"}
+                ] 
             },
             "within_default": 10
           }
         ],
         "must_see": true,
         "must_reach": true
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 2,
+        "entity_types": {
+          "filters": { "test": "is_family", "subject": "other", "operator": "!=", "value": "creeper" }
+        }
+      },
+      "minecraft:physics": {
       }
     },
 

@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:mooshroom_become_cow": {
@@ -30,7 +30,7 @@
 
       "minecraft:cow_adult": {
         "minecraft:loot": {
-          "table": "loot_tables/entities/cow.json"
+          "table": "loot_tables/entities/mooshroom.json"
         },
         "minecraft:behavior.breed": {
           "priority": 3,
@@ -40,8 +40,8 @@
           "requireTame": false,
           "breedItems": "wheat",
           "breedsWith": {
-            "mateType": "minecraft:mushroomcow",
-            "babyType": "minecraft:mushroomcow",
+            "mateType": "minecraft:mooshroom",
+            "babyType": "minecraft:mooshroom",
             "breed_event": {
               "event": "minecraft:entity_born",
               "target": "baby"
@@ -50,40 +50,43 @@
         },
         "minecraft:interact": [
           {
-            "on_interact": {
-              "filters": {
-                "other_with_item": "bowl",
-                "other_with_families": "player",
-                "without_components": "minecraft:transformation"
-              }
+            "filters": {
+              "all_of": [
+                { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bowl"},
+                { "test" :  "is_family", "subject" : "other", "value" :  "player"},
+                { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:transformation"}
+              ]
             },
-            "use_item": "true",
+            "use_item": true,
             "transform_to_item": "mushroom_stew:0",
             "interact_text": "action.interact.moostew"
           },
           {
-            "on_interact": {
-              "filters": {
-                "other_with_item": "shears",
-                "without_components": "minecraft:transformation"
-              },
-              "event": "become_cow",
-              "target": "self"
+            "filters": {
+              "all_of": [
+                { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears"},
+                { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:transformation"}
+              ]
             },
+            "event": "become_cow",
+            "target": "self",
             "use_item": false,
             "hurt_item": 1,
             "play_sounds": "shear",
-            "spawn_items": [ "red_mushroom", "red_mushroom", "red_mushroom", "red_mushroom", "red_mushroom" ],
+            "spawn_items": { "table": "loot_tables/entities/mooshroom_shear.json" },
+            "particle_on_start": { "particle_type": "largeexplode", "particle_y_offset": 0.25, "particle_offset_towards_interactor": true },
             "interact_text": "action.interact.mooshear"
           },
           {
             "on_interact": {
               "filters": {
-                "other_with_item": "bucket:0",
-                "other_with_families": "player"
+                "all_of": [
+                  { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bucket:0"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "player"}
+                ]
               }
             },
-            "use_item": "true",
+            "use_item": true,
             "transform_to_item": "bucket:1",
             "play_sounds": "milk",
             "interact_text": "action.interact.milk"
@@ -101,7 +104,7 @@
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:mushroomcow"
+        "id": "minecraft:mooshroom"
       },
       "minecraft:type_family": {
         "family": [ "mushroomcow" ]
@@ -121,8 +124,19 @@
         "max": 10
       },
       "minecraft:movement": {
-        "value": 0.25,
-        "max": 0.5
+        "value": 0.25
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+        
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
       },
       "minecraft:leashable": {
         "soft_distance": 4.0,
@@ -185,6 +199,8 @@
       },
       "minecraft:behavior.random_look_around": {
         "priority": 9
+      },
+	    "minecraft:physics": {
       }
     },
 

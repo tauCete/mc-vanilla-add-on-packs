@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:mule_baby": {
@@ -142,7 +142,9 @@
         "minecraft:equippable": {
           "slots": [
             {
+              "slot": 0,
               "item": "saddle",
+              "accepted_items": [ "saddle" ],
               "on_equip": {
                 "event": "minecraft:mule_saddled"
               },
@@ -161,27 +163,43 @@
             "position": [ 0.0, 0.975, -0.2 ]
           }
         },
-        "minecraft:behavior.player_ride_tamed": {
-
-        },
         "minecraft:inventory": {
-          "inventory_size": 17,
+          "inventory_size": 16,
           "container_type": "horse"
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 5,
+          "speed_multiplier": 1.2,
+          "items": [
+            "apple",
+            "carrot",
+            "golden_apple",
+            "appleEnchanted",
+            "golden_carrot",
+            "carrotOnAStick",
+            "tile.hay_block",
+            "sugar",
+            "bread",
+            "wheat"
+          ]
         }
       },
 
       "minecraft:mule_unchested": {
         "minecraft:interact": [
           {
+            "play_sounds": "armor.equip_generic",
             "on_interact": {
               "filters": {
-                "other_with_item": "chest:0",
-                "other_with_families": "player"
+                "all_of": [
+                  { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "chest:0"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "player"}
+                ]
               },
               "event": "minecraft:on_chest",
               "target": "self"
             },
-            "use_item": "true",
+            "use_item": true,
             "interact_text": "action.interact.attachchest"
           }
         ]
@@ -195,7 +213,12 @@
 
       "minecraft:mule_saddled": {
         "minecraft:is_saddled": {
-
+        },
+        "minecraft:input_ground_controlled": {
+        },
+        "minecraft:can_power_jump": {
+        },
+        "minecraft:behavior.player_ride_tamed": {
         }
       },
 
@@ -230,6 +253,16 @@
       },
       "minecraft:movement": {
         "value": 0.175
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+        
+      },
+      "minecraft:jump.static": {
       },
       "minecraft:nameable": {
       },
@@ -288,22 +321,6 @@
         "priority": 1,
         "speed_multiplier": 1.2
       },
-      "minecraft:behavior.tempt": {
-        "priority": 5,
-        "speed_multiplier": 1.2,
-        "items": [
-          "apple",
-          "carrot",
-          "golden_apple",
-          "appleEnchanted",
-          "golden_carrot",
-          "carrotOnAStick",
-          "tile.hay_block",
-          "sugar",
-          "bread",
-          "wheat"
-        ]
-      },
       "minecraft:behavior.random_stroll": {
         "priority": 6,
         "speed_multiplier": 0.7
@@ -315,6 +332,8 @@
       },
       "minecraft:behavior.random_look_around": {
         "priority": 8
+      },
+	    "minecraft:physics": {
       }
     },
 

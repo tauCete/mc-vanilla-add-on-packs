@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:guardian_aggressive": {
@@ -8,7 +8,12 @@
           "priority": 1,
           "entity_types": [
             {
-              "filters": { "other_with_families": [ "player", "squid" ] },
+              "filters": {  
+				"any_of": [
+				  { "test" :  "is_family", "subject" : "other", "value" :  "player"},
+				  { "test" :  "is_family", "subject" : "other", "value" :  "squid"}
+				] 
+			  },
               "max_dist": 16
             }
           ],
@@ -41,7 +46,7 @@
           "priority": 1,
           "entity_types": [
             {
-              "filters": { "other_with_families": "player" },
+              "filters": {"test" :  "is_family", "subject" : "other", "value" :  "player"},
               "max_dist": 8,
               "walk_speed_multiplier": 1,
               "sprint_speed_multiplier": 1
@@ -69,11 +74,17 @@
         "value": 0.5
       },
       "minecraft:attack": {
-        "damage": 6
+        "damage": 5
       },
       "minecraft:follow_range": {
         "value": 16,
         "max": 16
+      },
+      "minecraft:navigation.swim": {
+      },
+      "minecraft:movement.sway": {
+      },
+      "minecraft:jump.static": {
       },
       "minecraft:breathable": {
         "breathesWater": true
@@ -85,7 +96,12 @@
         "priority": 1,
         "entity_types": [
           {
-            "filters": { "other_with_families": ["player", "squid"] },
+            "filters": {  
+				"any_of": [
+				  { "test" :  "is_family", "subject" : "other", "value" :  "player"},
+				  { "test" :  "is_family", "subject" : "other", "value" :  "squid"}
+				] 
+			  },
             "max_dist": 16
           }
         ],
@@ -122,6 +138,8 @@
       },
       "minecraft:type_family": {
         "family": [ "guardian", "monster" ]
+      },
+	    "minecraft:physics": {
       }
     },
 
