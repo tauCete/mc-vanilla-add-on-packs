@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "dragon_sitting": {
@@ -29,7 +29,7 @@
         },
         "minecraft:shooter": {
           "type": "dragonfireball",
-          "def": "minecraft:fireball.dragon"
+          "def": "minecraft:dragon_fireball"
         }
       },
       "dragon_death": {
@@ -41,7 +41,7 @@
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:dragon"
+        "id": "minecraft:ender_dragon"
       },
       "minecraft:type_family": {
         "family": [ "dragon" ]
@@ -57,6 +57,7 @@
       "minecraft:movement": {
         "value": 0.3
       },
+      "minecraft:fire_immune": true,
       "minecraft:knockback_resistance": {
         "value": 100,
         "max": 100
@@ -81,6 +82,10 @@
       "minecraft:on_death": {
         "event": "minecraft:start_death",
         "target": "self"
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
       }
     },
 

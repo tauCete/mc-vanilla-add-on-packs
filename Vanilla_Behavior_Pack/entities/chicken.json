@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:chicken_baby": {
@@ -59,8 +59,14 @@
             "zombie"
           ],
           "seats": {
-             "position": [0.0, 0.4, 0.0]
+            "position": [ 0.0, 0.4, 0.0 ]
           }
+        },
+        "minecraft:spawn_entity": {
+          "min_wait_time": 300,
+          "max_wait_time": 600,
+          "spawn_sound": "plop",
+          "spawn_item": "egg"
         }
       },
 
@@ -112,6 +118,17 @@
           "target": "self"
         }
       },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+        
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -121,7 +138,7 @@
       },
       "minecraft:behavior.mount_pathing": {
         "priority": 2,
-        "speed_multiplier": 1.0,
+        "speed_multiplier": 1.5,
         "target_dist": 0.0,
         "track_target": true
       },
@@ -146,6 +163,8 @@
       },
       "minecraft:behavior.random_look_around": {
         "priority": 8
+      },
+	  "minecraft:physics": {
       }
     },
 

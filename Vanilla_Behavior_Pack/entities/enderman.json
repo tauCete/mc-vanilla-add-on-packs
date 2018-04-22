@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:enderman_calm": {
@@ -69,15 +69,17 @@
         "randomTeleportCube": [ 32, 32, 32 ],
         "targetDistance": 16,
         "target_teleport_chance": 0.05,
-        "lightTeleportChance": 0.01
+        "lightTeleportChance": 0.05
       },
       "minecraft:lookat": {
-        "searchRadius": 16.0,
+        "searchRadius": 64.0,
         "setTarget": true,
         "look_cooldown": 5.0,
-        "filters": {
-          "other_with_families": "player",
-          "other_without_armor": [ "pumpkin" ]
+        "filters": { 
+          "all_of": [
+            { "subject" : "other", "test" :  "is_family", "value" :  "player"},
+            { "test" :  "has_equipment", "domain": "head", "subject" : "other", "operator" : "not", "value" : "pumpkin"} 
+          ] 
         }
       },
       "minecraft:behavior.nearest_attackable_target": {
@@ -85,13 +87,23 @@
         "attack_interval": 10,
         "entity_types": [
           {
-            "filters": { "other_with_families": [ "endermite" ] },
-            "max_dist": 16
+            "filters": { "test" :  "is_family", "subject" : "other", "value" :  "endermite"},
+            "max_dist": 64
           }
         ],
         "must_see": true
       },
-
+      "minecraft:navigation.walk": {
+        "can_float": false,
+        "avoid_water": true
+      },
+      "minecraft:movement.basic": {
+        
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -118,6 +130,8 @@
       },
       "minecraft:hurt_when_wet": {
         "value": true
+      },
+	    "minecraft:physics": {
       }
     },
 

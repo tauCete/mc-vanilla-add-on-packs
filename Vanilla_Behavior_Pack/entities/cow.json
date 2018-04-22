@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:cow_baby": {
@@ -47,12 +47,14 @@
         "minecraft:interact": [
           {
             "on_interact": {
-              "filters": {
-                "other_with_item": "bucket:0",
-                "other_with_families": "player"
+              "filters": { 
+                "all_of": [
+                  { "test": "is_family", "subject" : "other", "value" :  "player"},
+                  { "test": "has_equipment", "domain": "hand", "subject": "other", "value": "bucket:0"}
+                ] 
               }
             },
-            "use_item": "true",
+            "use_item": true,
             "transform_to_item": "bucket:1",
             "play_sounds": "milk",
             "interact_text": "action.interact.milk"
@@ -80,6 +82,18 @@
         "totalSupply": 15,
         "suffocateTime": 0
       },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:collision_box": {
         "width": 0.9,
         "height": 1.3
@@ -91,8 +105,7 @@
         "max": 10
       },
       "minecraft:movement": {
-        "value": 0.25,
-        "max": 0.5
+        "value": 0.25
       },
       "minecraft:behavior.float": {
         "priority": 0
@@ -150,11 +163,13 @@
       "minecraft:rideable": {
         "seat_count": 1,
         "family_types": [
-           "zombie"
+          "zombie"
         ],
         "seats": {
-          "position": [0.0, 1.105, 0.0]
+          "position": [ 0.0, 1.105, 0.0 ]
         }
+      },
+      "minecraft:physics": {
       }
     },
 
