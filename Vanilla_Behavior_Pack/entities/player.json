@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "components": {
       "minecraft:identifier": {
@@ -16,14 +16,17 @@
         "width": 0.6,
         "height": 1.8
       },
+      "minecraft:can_climb": {
+      },
       "minecraft:movement": {
-        "value": 0.1,
-        "max": 0.5
+        "value": 0.1
       },
       "minecraft:attack": {
         "damage": 1
       },
-      "minecraft:player.saturation": { "value": 20 },
+      "minecraft:player.saturation": {
+        "value": 20
+      },
       "minecraft:player.exhaustion": {
         "value": 0,
         "max": 4
@@ -44,8 +47,30 @@
       "minecraft:nameable": {
         "alwaysShow": true,
         "allowNameTagRenaming": false
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:rideable": {
+        "seat_count": 2,
+        "family_types": [
+          "parrot_tame"
+        ],
+		"pull_in_entities": true,
+        "seats": [
+          {
+            "position": [ 0.4, -0.15, 0.04 ],
+            "min_rider_count": 0,
+            "max_rider_count": 0,
+            "lock_rider_rotation": 0
+          },
+          {
+            "position": [ -0.4, -0.15, 0.04 ],
+            "min_rider_count": 1,
+            "max_rider_count": 2,
+            "lock_rider_rotation": 0
+          }
+        ]
       }
-
     }
 
   }

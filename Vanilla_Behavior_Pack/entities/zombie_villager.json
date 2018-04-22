@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "baby": {
@@ -9,15 +9,13 @@
           "value":0.5
         },
         "minecraft:movement": {
-          "value": 0.35,
-          "max": 0.35
+          "value": 0.35
         }
       },
 
       "adult": {
         "minecraft:movement": {
-          "value": 0.23,
-          "max": 0.23
+          "value": 0.23
         },
         "minecraft:burns_in_daylight": { },
         "minecraft:rideable": {
@@ -71,10 +69,16 @@
           }
         },
         "minecraft:spell_effects": {
-          "add_effects": {
-            "effect": "strength",
-            "duration": 100
-          },
+          "add_effects": [
+            {
+              "effect": "strength",
+              "duration": 100
+            },
+            {
+              "effect": "heal",
+              "duration": 100
+            }
+          ],
           "remove_effects": "weakness"
         },
         "minecraft:is_shaking": {
@@ -117,6 +121,15 @@
       "librarian": {
         "minecraft:type_family": {
           "family": [ "librarian", "zombie_villager", "zombie", "undead", "monster" ]
+        },
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+
+      "cartographer": {
+        "minecraft:type_family": {
+          "family": [ "cartographer", "zombie_villager", "zombie", "undead", "monster" ]
         },
         "minecraft:variant": {
           "value": 1
@@ -181,7 +194,17 @@
       },
 
       // Zombie_villager Components
-      
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "can_pass_doors": true,
+        "can_open_doors": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:breathable": {
         "totalSupply": 15,
         "suffocateTime": 0
@@ -208,13 +231,15 @@
         // Curing the villager
         "on_interact": {
           "filters": {
-            "other_with_item": "golden_apple",
-            "with_components": "minecraft:effect.weakness"
+                "all_of": [
+                  { "test" :  "has_equipment", "domain": "hand", "subject" : "other", "value" :  "golden_apple"},
+                  { "test" :  "has_component", "subject" : "self", "value" :  "minecraft:effect.weakness"}
+                ]
           },
           "event": "villager_converted",
           "target": "self"
         },
-        "use_item": "true",
+        "use_item": true,
         "interact_text": "action.interact.cure"
       },
 
@@ -253,10 +278,36 @@
         "priority": 2,
         "entity_types": [
           {
-            "filters": { "other_with_families": [ "player", "irongolem", "snowgolem", "villager" ] },
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "snowgolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                }
+              ]
+            },
             "max_dist": 35
           }
-        ]
+        ],
+        "must_see": true
+      },
+	    "minecraft:physics": {
       }
    },
 
@@ -271,108 +322,172 @@
         }
       },
       "minecraft:entity_spawned": {
-        "randomize": [
+        "sequence": [
           {
-            "weight": 9500,
-            "remove": {
-            },
-            "add": {
-              "component_groups": [
-                "adult"
-              ]
-            }
+            "filters": { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:variant"},
+            "randomize": [
+              {
+                "weight": 9500,
+                "remove": {
+                },
+                "add": {
+                  "component_groups": [
+                    "adult"
+                  ]
+                }
+              },
+              {
+                "weight": 425,
+                "remove": {
+                },
+                "add": {
+                  "component_groups": [
+                    "baby"
+                  ]
+
+                }
+              },
+              {
+                "weight": 75,
+                "remove": {
+                },
+                "add": {
+                  "component_groups": [
+                    "baby",
+                    "jockey"
+                  ]
+
+                }
+              }
+            ]
           },
           {
-            "weight": 425,
-            "remove": {
-            },
-            "add": {
-              "component_groups": [
-                "baby"
-              ]
-
-            }
-          },
-          {
-            "weight": 75,
-            "remove": {
-            },
-            "add": {
-              "component_groups": [
-                "baby",
-                "jockey"
-              ]
-
-            }
+            "filters": { "test" :  "has_component",  "operator": "!=", "value" :  "minecraft:variant"},
+            "randomize": [
+              {
+                "weight": 5,
+                "add": { "component_groups": [ "farmer" ] }
+              },
+              {
+                "weight": 5,
+                "add": { "component_groups": [ "fisherman" ] }
+              },
+              {
+                "weight": 5,
+                "add": { "component_groups": [ "shepherd" ] }
+              },
+              {
+                "weight": 5,
+                "add": { "component_groups": [ "fletcher" ] }
+              },
+              {
+                "weight": 20,
+                "add": { "component_groups": [ "librarian" ] }
+              },
+              {
+                "weight": 20,
+                "add": { "component_groups": [ "cartographer" ] }
+              },
+              {
+                "weight": 20,
+                "add": { "component_groups": [ "cleric" ] }
+              },
+              {
+                "weight": 6,
+                "add": { "component_groups": [ "armorer" ] }
+              },
+              {
+                "weight": 6,
+                "add": { "component_groups": [ "weaponsmith" ] }
+              },
+              {
+                "weight": 6,
+                "add": { "component_groups": [ "toolsmith" ] }
+              },
+              {
+                "weight": 10,
+                "add": { "component_groups": [ "butcher" ] }
+              },
+              {
+                "weight": 10,
+                "add": { "component_groups": [ "leatherworker" ] }
+              }
+            ]
           }
         ]
       },
+
       "minecraft:entity_transformed": {
-        "filters": { "other_without_components": "minecraft:variant" },
+        "filters": { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:variant"},
         "sequence": [
           // Transform baby villager to baby zombie
           {
-            "filters": { "other_with_components": "minecraft:is_baby" },
+            "filters": { "test" :  "has_component", "subject": "other", "value" :  "minecraft:is_baby"},
             "add": { "component_groups": [ "baby" ] }
           },
           // Transform adult villager to adult zombie
           {
-            "filters": { "other_without_components": "minecraft:is_baby" },
+            "filters": { "test" :  "has_component", "subject": "other", "operator": "!=", "value" :  "minecraft:is_baby"},
             "add": { "component_groups": [ "adult" ] }
           },
           // Transform farmer zombie to farmer villager
           {
-            "filters": { "other_with_families": "farmer" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "farmer"},
             "add": { "component_groups": [ "farmer" ] }
           },
           // Transform fisherman zombie to fisherman villager
           {
-            "filters": { "other_with_families": "fisherman" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "fisherman"},
             "add": { "component_groups": [ "fisherman" ] }
           },
           // Transform shepherd zombie to shepherd villager
           {
-            "filters": { "other_with_families": "shepherd" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "shepherd"},
             "add": { "component_groups": [ "shepherd" ] }
           },
           // Transform fletcher zombie to fletcher villager
           {
-            "filters": { "other_with_families": "fletcher" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "fletcher"},
             "add": { "component_groups": [ "fletcher" ] }
           },
           // Transform librarian zombie to librarian villager
           {
-            "filters": { "other_with_families": "librarian" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "librarian"},
             "add": { "component_groups": [ "librarian" ] }
+          },
+          // Transform cartographer zombie to cartographer villager
+          {
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "cartographer"},
+            "add": { "component_groups": [ "cartographer" ] }
           },
           // Transform cleric zombie to cleric villager
           {
-            "filters": { "other_with_families": "cleric" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "cleric"},
             "add": { "component_groups": [ "cleric" ] }
           },
           // Transform armorer zombie to armorer villager
           {
-            "filters": { "other_with_families": "armorer" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "armorer"},
             "add": { "component_groups": [ "armorer" ] }
           },
           // Transform weaponsmith zombie to weaponsmith villager
           {
-            "filters": { "other_with_families": "weaponsmith" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "weaponsmith"},
             "add": { "component_groups": [ "weaponsmith" ] }
           },
           // Transform toolsmith zombie to toolsmith villager
           {
-            "filters": { "other_with_families": "toolsmith" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "toolsmith"},
             "add": { "component_groups": [ "toolsmith" ] }
           },
           // Transform butcher zombie to butcher villager
           {
-            "filters": { "other_with_families": "butcher" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "butcher"},
             "add": { "component_groups": [ "butcher" ] }
           },
           // Transform leatherworker zombie to leatherworker villager
           {
-            "filters": { "other_with_families": "leatherworker" },
+            "filters": { "test" :  "is_family", "subject": "other", "value" :  "leatherworker"},
             "add": { "component_groups": [ "leatherworker" ] }
           }
         ]

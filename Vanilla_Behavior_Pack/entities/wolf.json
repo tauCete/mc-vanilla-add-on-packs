@@ -1,15 +1,15 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:wolf_baby": {
         "minecraft:is_baby": {
         },
         "minecraft:scale": {
-          "value":0.5
+          "value": 0.5
         },
-      
+
         "minecraft:ageable": {
           "duration": 1200,
           "feedItems": [
@@ -77,6 +77,18 @@
       },
 
       "minecraft:wolf_wild": {
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 3,
+          "entity_types": [
+            {
+              "filters": { "test": "is_family", "subject": "other", "value": "llama" },
+              "max_dist": 24,
+              "walk_speed_multiplier": 1.5,
+              "sprint_speed_multiplier": 1.5
+            }
+          ],
+          "probability_per_strength": 0.14
+        },
         "minecraft:tameable": {
           "probability": 0.33,
           "tameItems": "bone",
@@ -91,7 +103,13 @@
           "attack_interval": 10,
           "entity_types": [
             {
-              "filters": { "other_with_families": [ "skeleton", "sheep", "rabbit" ] },
+              "filters": {  
+                "any_of": [
+                  { "test" :  "is_family", "subject" : "other", "value" :  "skeleton"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "sheep"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "rabbit"}
+                ] 
+			},
               "max_dist": 16
             }
           ],
@@ -107,7 +125,7 @@
             "zombie"
           ],
           "seats": {
-            "position": [0.0, 0.675, -0.1]
+            "position": [ 0.0, 0.675, -0.1 ]
           }
         }
       },
@@ -146,7 +164,7 @@
           "attack_interval": 10,
           "entity_types": [
             {
-              "filters": { "other_with_families": "skeleton" },
+              "filters": { "test" :  "is_family", "subject" : "other", "value" :  "skeleton"},
               "max_dist": 16
             }
           ],
@@ -207,29 +225,93 @@
       "minecraft:movement": {
         "value": 0.3
       },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:attack": {
         "damage": 3
       },
       "minecraft:healable": {
         "items": [
-          "porkchop",
-          "cooked_porkchop",
-          "fish",
-          "salmon",
-          "clownfish",
-          "pufferfish",
-          "cooked_fish",
-          "cooked_salmon",
-          "beef",
-          "cooked_beef",
-          "chicken",
-          "cooked_chicken",
-          "muttonRaw",
-          "muttonCooked",
-          "rotten_flesh",
-          "rabbit",
-          "cooked_rabbit",
-          "rabbit_stew"
+          {
+            "item": "porkchop",
+            "heal_amount": 3
+          },
+          {
+            "item": "cooked_porkchop",
+            "heal_amount": 8
+          },
+          {
+            "item": "fish",
+            "heal_amount": 2
+          },
+          {
+            "item": "salmon",
+            "heal_amount": 2
+          },
+          {
+            "item": "clownfish",
+            "heal_amount": 1
+          },
+          {
+            "item": "pufferfish",
+            "heal_amount": 1
+          },
+          {
+            "item": "cooked_fish",
+            "heal_amount": 5
+          },
+          {
+            "item": "cooked_salmon",
+            "heal_amount": 6
+          },
+          {
+            "item": "beef",
+            "heal_amount": 3
+          },
+          {
+            "item": "cooked_beef",
+            "heal_amount": 8
+          },
+          {
+            "item": "chicken",
+            "heal_amount": 2
+          },
+          {
+            "item": "cooked_chicken",
+            "heal_amount": 6
+          },
+          {
+            "item": "muttonRaw",
+            "heal_amount": 2
+          },
+          {
+            "item": "muttonCooked",
+            "heal_amount": 6
+          },
+          {
+            "item": "rotten_flesh",
+            "heal_amount": 4
+          },
+          {
+            "item": "rabbit",
+            "heal_amount": 3
+          },
+          {
+            "item": "cooked_rabbit",
+            "heal_amount": 5
+          },
+          {
+            "item": "rabbit_stew",
+            "heal_amount": 10
+          }
         ]
       },
       "minecraft:behavior.float": {
@@ -258,6 +340,11 @@
         "priority": 8,
         "speed_multiplier": 1.0
       },
+      "minecraft:behavior.look_at_player": {
+        "priority": 6,
+        "target_distance": 6.0,
+        "probability": 0.02
+      },
       "minecraft:behavior.beg": {
         "priority": 9,
         "look_distance": 8,
@@ -267,6 +354,8 @@
 
       "minecraft:behavior.hurt_by_target": {
         "priority": 3
+      },
+	    "minecraft:physics": {
       }
     },
 

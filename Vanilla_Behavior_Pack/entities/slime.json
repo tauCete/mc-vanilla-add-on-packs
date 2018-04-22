@@ -1,19 +1,19 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:slime_large": {
         "minecraft:collision_box": {
-          "width": 1.04,
-          "height": 1.04
+          "width": 2.08,
+          "height": 2.08
         },
         "minecraft:health": {
           "value": 16,
           "max": 16
         },
         "minecraft:movement": {
-          "value": 0.25
+          "value": 0.6
         },
         "minecraft:attack": {
           "damage": 4
@@ -22,15 +22,15 @@
 
       "minecraft:slime_medium": {
         "minecraft:collision_box": {
-          "width": 0.78,
-          "height": 0.78
+          "width": 1.04,
+          "height": 1.04
         },
         "minecraft:health": {
           "value": 4,
           "max": 4
         },
         "minecraft:movement": {
-          "value": 0.22
+          "value": 0.4
         },
         "minecraft:attack": {
           "damage": 2
@@ -47,13 +47,24 @@
           "max": 1
         },
         "minecraft:movement": {
-          "value": 0.21
+          "value": 0.3
         },
         "minecraft:attack": {
           "damage": 0
         },
         "minecraft:loot": {
           "table": "loot_tables/entities/slime.json"
+        }
+      },
+
+      "minecraft:slime_calm": {
+        "minecraft:movement.jump": {
+          "jump_delay": [ 0.5, 1.5 ]
+        }
+      },
+      "minecraft:slime_aggressive": {
+        "minecraft:movement.jump": {
+          "jump_delay": [ 0.16, 0.5 ]
         }
       }
     },
@@ -68,6 +79,25 @@
       "minecraft:breathable": {
         "totalSupply": 15,
         "suffocateTime": 0
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
+      "minecraft:movement.jump": {
+        "jump_delay": [ 0.5, 1.5 ]
+      },
+      "minecraft:on_target_acquired": {
+        "event": "minecraft:become_aggressive",
+        "target": "self"
+      },
+      "minecraft:on_target_escape": {
+        "event": "minecraft:become_calm",
+        "target": "self"
       },
       "minecraft:nameable": {
       },
@@ -87,14 +117,56 @@
         "priority": 2,
         "entity_types": [
           {
-            "filters": { "other_with_families": [ "player", "irongolem", "snowgolem" ] },
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "snowgolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                }
+              ]
+            },
             "max_dist": 16
           }
-        ]
+        ],
+        "must_see": true
+      },
+	    "minecraft:physics": {
       }
     },
 
     "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "minecraft:slime_calm"
+          ]
+        }
+      },
+      "minecraft:become_calm": {
+        "add": {
+          "component_groups": [
+            "minecraft:slime_calm"
+          ]
+        }
+      },
+      "minecraft:become_aggressive": {
+        "add": {
+          "component_groups": [
+            "minecraft:slime_aggressive"
+          ]
+        }
+      }
     }
   }
 }

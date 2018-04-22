@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "components": {
       "minecraft:identifier": {
@@ -23,7 +23,16 @@
       "minecraft:movement": {
         "value": 0.25
       },
-
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": false
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:behavior.float": {
         "priority": 1
       },
@@ -53,7 +62,13 @@
         "priority": 2,
         "entity_types": [
           {
-            "filters": { "other_with_families": [ "player", "irongolem", "snowgolem" ] },
+            "filters": {  
+                "any_of": [
+                  { "test" :  "is_family", "subject" : "other", "value" :  "player"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "snowgolem"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "irongolem"}
+                ] 
+			},
             "max_dist": 10
           }
         ],
@@ -61,6 +76,8 @@
       },
      "minecraft:type_family": {
        "family": [ "witch", "monster" ]
+     },
+	   "minecraft:physics": {
      }
     }
   }

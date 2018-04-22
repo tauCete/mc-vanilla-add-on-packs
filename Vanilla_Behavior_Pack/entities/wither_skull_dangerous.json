@@ -1,6 +1,6 @@
 {
  "minecraft:entity": {
-  "format_version": 0.1,
+  "format_version": "1.2.0",
 
   "component_groups": {
     "minecraft:exploding": {
@@ -9,14 +9,15 @@
         "fuseLit": true,
         "power": 1,
         "causesFire": false,
-        "maxResistance": 4.0
+        "maxResistance": 4.0,
+        "destroyAffectedByGriefing": true
       }
     }
   },
 
   "components": {
     "minecraft:identifier": {
-      "id": "minecraft:wither.skull.dangerous"
+      "id": "minecraft:wither_skull_dangerous"
     },
     "minecraft:collision_box": {
       "width": 0.15,
@@ -50,7 +51,10 @@
       "isdangerous": true,
       "inertia": 1.0,
       "liquid_inertia": 1.0,
-      "shoottarget": false
+      "shoottarget": false,
+      "reflectOnHurt": true 
+    },
+	  "minecraft:physics": {
     }
   },
   "events": {

@@ -1,6 +1,6 @@
 {
  "minecraft:entity": {
-  "format_version": 0.1,
+  "format_version": "1.2.0",
 
   "component_groups": {
     "minecraft:exploding": {
@@ -8,14 +8,15 @@
         "fuseLength": 0,
         "fuseLit": true,
         "power": 1,
-        "causesFire": false
+        "causesFire": false,
+        "destroyAffectedByGriefing": true
       }
     }
   },
 
   "components": {
     "minecraft:identifier": {
-      "id": "minecraft:wither.skull"
+      "id": "minecraft:wither_skull"
     },
     "minecraft:collision_box": {
       "width": 0.15,
@@ -49,6 +50,8 @@
       "inertia": 1.0,
       "liquid_inertia": 1.0,
       "shoottarget": false
+    },
+	  "minecraft:physics": {
     }
   },
   "events": {

@@ -1,13 +1,13 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:pig_baby": {
         "minecraft:is_baby": {
         },
         "minecraft:scale": {
-          "value":0.5
+          "value": 0.5
         },
         "minecraft:ageable": {
           "duration": 1200,
@@ -35,10 +35,6 @@
         "minecraft:loot": {
           "table": "loot_tables/entities/pig.json"
         },
-        "minecraft:collision_box": {
-          "width": 0.9,
-          "height": 0.9
-        },
         "minecraft:behavior.breed": {
           "priority": 4,
           "speed_multiplier": 1.0
@@ -61,9 +57,7 @@
         "minecraft:interact": [
           {
             "on_interact": {
-              "filters": {
-                "other_with_item": "saddle"
-              },
+              "filters": { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "saddle"},
               "event": "minecraft:on_saddled"
             },
             "use_item": true,
@@ -77,7 +71,7 @@
             "zombie"
           ],
           "seats": {
-            "position": [0.0, 0.63, 0.0]
+            "position": [ 0.0, 0.63, 0.0 ]
           }
         }
       },
@@ -102,9 +96,12 @@
         "minecraft:rideable": {
           "seat_count": 1,
           "interact_text": "action.interact.mount",
+          "family_types": [
+            "player"
+          ],
           "seats": {
-            "position": [0.0, 0.63, 0.0]
-          }        
+            "position": [ 0.0, 0.63, 0.0 ]
+          }
         },
         "minecraft:item_controllable": {
           "control_items": "carrotOnAStick"
@@ -126,9 +123,7 @@
     "components": {
       "minecraft:damage_sensor": {
         "on_damage": {
-          "filters": {
-            "other_with_families": "lightning"
-          },
+          "filters": { "test" :  "is_family", "subject" : "other", "value" :  "lightning"},
           "event": "become_zombie"
         },
         "deals_damage": false
@@ -150,8 +145,23 @@
         "max": 10
       },
       "minecraft:movement": {
-        "value": 0.25,
-        "max": 0.5
+        "value": 0.25
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 0.9
       },
       "minecraft:leashable": {
         "soft_distance": 4.0,
@@ -200,6 +210,8 @@
       },
       "minecraft:behavior.random_look_around": {
         "priority": 9
+      },
+	    "minecraft:physics": {
       }
     },
 

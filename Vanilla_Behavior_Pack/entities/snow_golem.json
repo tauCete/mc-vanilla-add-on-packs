@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:snowgolem_leashed": {
@@ -17,7 +17,7 @@
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:snowgolem"
+        "id": "minecraft:snow_golem"
       },
       "minecraft:type_family": {
         "family": [ "snowgolem" ]
@@ -26,8 +26,8 @@
         "totalSupply": 15,
         "suffocateTime": 0
       },
-	  "minecraft:nameable": {
-	  },
+      "minecraft:nameable": {
+      },
       "minecraft:collision_box": {
         "width": 0.4,
         "height": 1.8
@@ -42,11 +42,20 @@
       "minecraft:movement": {
         "value": 0.2
       },
-     "minecraft:attack": {
-      "damage": 2
-     },
-     "minecraft:fall_damage": {
-       "value": 0.0
+      "minecraft:navigation.walk": {
+        "avoid_water": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
+      "minecraft:attack": {
+        "damage": 2
+      },
+      "minecraft:fall_damage": {
+        "value": 0.0
       },
       "minecraft:interact": [
         {
@@ -57,16 +66,18 @@
           "interact_text": "action.interact.shear",
           "on_interact": {
             "filters": {
-              "other_with_item": "shears",
-              "other_with_families": "player",
-              "without_components": "minecraft:is_sheared"
-            },
+                "all_of": [
+				  { "test": "has_equipment", "subject": "other", "domain": "hand", "value": "shears"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "player"},
+                  { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:is_sheared"}
+                ]
+              },
             "event": "minecraft:on_sheared",
             "target": "self"
           }
         }
       ],
-      
+
       "minecraft:leashable": {
         "soft_distance": 4.0,
         "hard_distance": 6.0,
@@ -87,6 +98,9 @@
         "attack_interval": 1,
         "attack_radius": 10
       },
+      "minecraft:shooter": {
+        "def": "minecraft:snowball"
+      },
       "minecraft:behavior.random_stroll": {
         "priority": 2,
         "speed_multiplier": 1
@@ -102,11 +116,16 @@
         "priority": 1,
         "entity_types": [
           {
-            "filters": { "other_with_families": "monster" },
+            "filters": { "test" :  "is_family", "subject" : "other", "value" :  "monster"},
             "within_default": 6
           }
         ],
         "must_reach": true
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:hurt_when_wet": {
+        "value": true
       }
     },
 
