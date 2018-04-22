@@ -4,7 +4,7 @@
       "conditions": [
         {
           "condition": "random_regional_difficulty_chance",
-          "max_chance": 0.15
+          "max_chance": 0.05
         }
       ],
       "rolls": 1,

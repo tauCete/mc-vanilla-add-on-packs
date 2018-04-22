@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "minecraft:golden_sword",
+          "name": "minecraft:iron_axe",
           "weight": 1,
           "functions": [
             {
@@ -19,7 +19,7 @@
               "function": "enchant_random_gear",
               "chance": 0.25
             }
-		  ]
+          ]
         }
       ]
     }
