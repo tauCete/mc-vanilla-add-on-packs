@@ -1,16 +1,15 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "components": {
       "minecraft:identifier": {
         "id": "minecraft:minecart"
       },
       "minecraft:is_stackable": {
-        "value": true
       },
       "minecraft:type_family": {
-        "family": [ "minecart" ]
+        "family": [ "minecart", "inanimate" ]
       },
       "minecraft:collision_box": {
         "width": 0.98,
@@ -21,12 +20,16 @@
       "minecraft:rideable": {
         "seat_count": 1,
         "interact_text": "action.interact.ride.minecart",
+        "pull_in_entities": true,
+
         "seats": {
-          "position": [ 0.0, 0.0, 0.0 ]
+          "position": [ 0.0, -0.2, 0.0 ]
         }
       },
       "minecraft:rail_sensor": {
         "eject_on_activate": true
+      },
+      "minecraft:physics": {
       }
     }
   }

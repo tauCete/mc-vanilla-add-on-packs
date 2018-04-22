@@ -9,7 +9,7 @@
         {
           "type": "item",
           "name": "minecraft:ender_pearl",
-          "weight": 10
+          "weight": 50
         },
         {
           "type": "item",
@@ -23,7 +23,21 @@
               }
             }
           ],
-          "weight": 3
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "minecraft:diamond",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 15
         },
         {
           "type": "item",
@@ -37,7 +51,7 @@
               }
             }
           ],
-          "weight": 10
+          "weight": 50
         },
         {
           "type": "item",
@@ -51,7 +65,7 @@
               }
             }
           ],
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
@@ -65,7 +79,7 @@
               }
             }
           ],
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
@@ -79,7 +93,7 @@
               }
             }
           ],
-          "weight": 15
+          "weight": 75
         },
         {
           "type": "item",
@@ -93,67 +107,67 @@
               }
             }
           ],
-          "weight": 15
+          "weight": 75
         },
         {
           "type": "item",
           "name": "minecraft:iron_pickaxe",
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
           "name": "minecraft:iron_sword",
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
           "name": "minecraft:iron_chestplate",
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
           "name": "minecraft:iron_helmet",
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
           "name": "minecraft:iron_leggings",
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
           "name": "minecraft:iron_boots",
-          "weight": 5
+          "weight": 25
         },
         {
           "type": "item",
           "name": "minecraft:golden_apple",
-          "weight": 1
+          "weight": 5
         },
         {
           "type": "item",
           "name": "minecraft:saddle",
-          "weight": 1
+          "weight": 5
         },
         {
           "type": "item",
           "name": "minecraft:horsearmoriron",
-          "weight": 1
+          "weight": 5
         },
         {
           "type": "item",
           "name": "minecraft:horsearmorgold",
-          "weight": 1
+          "weight": 5
         },
         {
           "type": "item",
           "name": "minecraft:horsearmordiamond",
-          "weight": 1
+          "weight": 5
         },
         {
           "type": "item",
           "name": "minecraft:book",
-          "weight": 1,
+          "weight": 6,
           "functions": [
             {
               "function": "enchant_with_levels",

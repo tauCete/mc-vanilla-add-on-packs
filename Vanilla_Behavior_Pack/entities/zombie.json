@@ -1,23 +1,21 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:zombie_baby": {
-        "minecraft:is_baby": { },
+        "minecraft:is_baby": {},
         "minecraft:scale": {
           "value": 0.5
         },
         "minecraft:movement": {
-          "value": 0.35,
-          "max": 0.35
+          "value": 0.35
         }
       },
 
       "minecraft:zombie_adult": {
         "minecraft:movement": {
-          "value": 0.23,
-          "max": 0.23
+          "value": 0.23
         },
         "minecraft:burns_in_daylight": {
         },
@@ -27,7 +25,7 @@
             "zombie"
           ],
           "seats": {
-            "position": [ 0.0, 0.9, -0.25 ],
+            "position": [ 0.0, 1.1, -0.35 ],
             "lock_rider_rotation": 0
           }
         },
@@ -58,10 +56,6 @@
       "minecraft:type_family": {
         "family": [ "zombie", "undead", "monster" ]
       },
-      "minecraft:breathable": {
-        "totalSupply": 15,
-        "suffocateTime": 0
-      },
       "minecraft:collision_box": {
         "width": 0.6,
         "height": 1.8
@@ -69,10 +63,24 @@
       "minecraft:equipment": {
         "table": "loot_tables/entities/zombie_equipment.json"
       },
-
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "can_pass_doors": true,
+        "can_open_doors": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:health": {
         "value": 20,
         "max": 20
+      },
+      "minecraft:breathable": {
+        "totalSupply": 15,
+        "suffocateTime": 0
       },
       "minecraft:attack": {
         "damage": 3
@@ -117,10 +125,36 @@
         "within_radius": 25,
         "entity_types": [
           {
-            "filters": { "other_with_families": [ "player", "irongolem", "snowgolem", "villager" ] },
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "snowgolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                }
+              ]
+            },
             "max_dist": 35
           }
-        ]
+        ],
+        "must_see": true
+      },
+      "minecraft:physics": {
       }
     },
 

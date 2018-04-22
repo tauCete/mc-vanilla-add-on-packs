@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:zombie_horse_leashed": {
@@ -13,7 +13,7 @@
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:zombiehorse"
+        "id": "minecraft:zombie_horse"
       },
       "minecraft:type_family": {
         "family": [ "zombiehorse", "undead" ]
@@ -35,6 +35,14 @@
       },
       "minecraft:movement": {
         "value": 0.2
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
       },
       "minecraft:nameable": {
       },
@@ -98,6 +106,8 @@
       },
       "minecraft:behavior.player_ride_tamed": {
 
+      },
+	    "minecraft:physics": {
       }
     },
 

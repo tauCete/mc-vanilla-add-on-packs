@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups":{
       "minecraft:squid_baby": {
@@ -48,10 +48,18 @@
         "breathesAir": false,
         "breathesWater": true
       },
-      
-      "minecraft:movement":{
-        "value":0.2,
-        "max":0.5
+
+      "minecraft:movement": {
+        "value": 0.2
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
       },
 
       "minecraft:leashable": {
@@ -82,6 +90,8 @@
       },
       "minecraft:behavior.squid_out_of_water":{
         "priority": 2
+      },
+	    "minecraft:physics": {
       }
     },
     

@@ -1,16 +1,21 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:primed_tnt": {
         "minecraft:explode": {
+          "on_activate": {
+
+          },
           "fuseLength": 4,
           "fuseLit": true,
           "power": 3,
           "causesFire": false
         },
         "minecraft:rail_sensor": {
+          
+        
         },
         "minecraft:is_ignited": {
         }
@@ -18,19 +23,39 @@
       "minecraft:inactive": {
         "minecraft:rail_sensor": {
           "on_activate": {
+
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_game_rule",
+                  "domain": "tntexplodes",
+                  "operator": "==",
+                  "value": true
+                }
+              ]
+            },
             "event": "minecraft:on_prime"
           }
+          
         },
         "minecraft:interact": [
           {
             "on_interact": {
-              "filters": {
-                "other_with_item": [
-                  "flint_and_steel",
-                  "fireball:0"
-                ],
-                "other_with_families": "player"
-              },
+            "filters": {
+			  "any_of": [
+				{"test": "has_equipment", "subject": "other", "domain": "hand", "value": "fireball:0"},
+          {
+            "test": "has_equipment",
+            "subject": "other",
+            "domain": "hand",
+            "value": "flint_and_steel"
+          }
+			  ],
+			  "all_of": [
+          {"test": "is_family", "subject": "other", "value": "player"},
+          {"test": "is_game_rule", "domain": "tntexplodes", "operator": "==", "value": true}
+			  ]
+			},
               "event": "minecraft:on_prime",
               "target": "self"
             },
@@ -40,7 +65,25 @@
           },
           {
             "on_interact": {
-              "filters": {"other_with_components": "fire_aspect"},
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "has_component",
+                    "subject": "other",
+                    "value": "fire_aspect"
+                  }
+                ],
+
+                "all_of": [
+                  {
+                    "test": "is_game_rule",
+                    "domain": "tntexplodes",
+                    "operator": "==",
+                    "value": true
+                  }
+                ]
+
+              },
               "event": "minecraft:on_prime",
               "target": "self"
             },
@@ -53,10 +96,10 @@
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:minecarttnt"
+        "id": "minecraft:tnt_minecart"
       },
       "minecraft:type_family": {
-        "family": [ "minecart" ]
+        "family": [ "minecart", "inanimate" ]
       },
       "minecraft:collision_box": {
         "width": 0.98,
@@ -65,7 +108,8 @@
       "minecraft:rail_movement": {
       },
       "minecraft:is_stackable": {
-        "value": true
+      },
+	    "minecraft:physics": {
       }
     },
 

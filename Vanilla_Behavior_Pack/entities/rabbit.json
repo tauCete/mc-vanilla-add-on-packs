@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "baby": {
@@ -108,8 +108,17 @@
         "height": 0.67
       },
       "minecraft:movement": {
-        "value": 0.3,
-        "max": 0.3
+        "value": 0.3
+      },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "avoid_water": true
+      },
+      "minecraft:movement.skip": {
+      },
+      "minecraft:jump.dynamic": {
+      },
+      "minecraft:can_climb": {
       },
       "minecraft:leashable": {
         "soft_distance": 4.0,
@@ -136,19 +145,19 @@
         "priority": 4,
         "entity_types":[
           {
-            "filters": { "other_with_families": "player" },
+            "filters": { "test" :  "is_family", "subject" : "other", "value" :  "player"},
             "max_dist": 8,
-            "walk_speed_multiplier": 2.2,
-            "sprint_speed_multiplier": 2.2
+            "walk_speed_multiplier": 1.5,
+            "sprint_speed_multiplier": 1.8
           },
           {
-            "filters": { "other_with_families": "wolf" },
+            "filters": { "test" :  "is_family", "subject" : "other", "value" :  "wolf"},
             "max_dist": 4,
-            "walk_speed_multiplier": 2.2,
-            "sprint_speed_multiplier": 2.2
+            "walk_speed_multiplier": 1.5,
+            "sprint_speed_multiplier": 1.8
           },
           {
-            "filters": { "other_with_families": "monster" },
+            "filters": { "test" :  "is_family", "subject" : "other", "value" :  "monster"},
             "max_dist": 4,
             "walk_speed_multiplier": 1.5,
             "sprint_speed_multiplier": 1.5
@@ -184,6 +193,8 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 11
+      },
+	    "minecraft:physics": {
       }
     },
 
@@ -219,7 +230,7 @@
             ]
           },
           {
-            "filters": { "without_components": "minecraft:variant" },
+            "filters": { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:variant"},
             "randomize": [
               {
                 "weight": 50,
@@ -236,11 +247,11 @@
             ]
           },
           {
-            "filters": { "with_environment_any": "biome:desert" },
+            "filters": { "test": "is_biome", "value": "desert" },
             "add": { "component_groups": [ "coat_desert" ] }
           },
           {
-            "filters": { "with_environment_any": "biome:snow_covered" },
+            "filters": { "test": "is_snow_covered", "value": true },
             "randomize": [
               {
                 "weight": 80,
@@ -259,7 +270,7 @@
         "sequence": [
           { "add": { "component_groups": [ "baby" ] } },
           {
-            "filters": { "without_components": "minecraft:variant" },
+            "filters": { "test" :  "has_component", "operator": "!=", "value" :  "minecraft:variant"},
             "randomize": [
               {
                 "weight": 50,
@@ -276,11 +287,11 @@
             ]
           },
           {
-            "filters": { "with_environment_any": "biome:desert" },
+            "filters": { "test": "is_biome", "value": "desert" },
             "add": { "component_groups": [ "coat_desert" ] }
           },
           {
-            "filters": { "with_environment_any": "biome:snow_covered" },
+            "filters": { "test": "is_snow_covered", "value": true },
             "randomize": [
               {
                 "weight": 80,

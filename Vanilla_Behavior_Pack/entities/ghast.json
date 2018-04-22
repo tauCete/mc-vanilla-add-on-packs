@@ -1,19 +1,19 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "components": {
-    
+
       "minecraft:identifier": {
         "id": "minecraft:ghast"
       },
       "minecraft:breathable": {
         "totalSupply": 15,
         "suffocateTime": 0
-      },      
+      },
       "minecraft:fire_immune": true,
-	    "minecraft:nameable": {
-	    },
+      "minecraft:nameable": {
+      },
       "minecraft:health": {
         "value": 10,
         "max": 10
@@ -22,25 +22,38 @@
         "width": 4,
         "height": 4
       },
+      "minecraft:movement": {
+        "value": 0.03
+      },
+      "minecraft:navigation.float": {
+        "can_float": true
+      },
+      "minecraft:behavior.float_wander": {
+        "priority": 2,
+        "must_reach": true
+      },
+      "minecraft:can_fly": {
+      },
       "minecraft:loot": {
         "table": "loot_tables/entities/ghast.json"
       },
-       "minecraft:shooter": {
+      "minecraft:shooter": {
         "type": "largefireball",
-        "def": "minecraft:fireball.large"
+        "def": "minecraft:fireball"
       },
       "minecraft:type_family": {
-        "family":["ghast", "monster"]          
+        "family": [ "ghast", "monster" ]
       },
-     "minecraft:fall_damage": {
-       "value": 0.0
+      "minecraft:fall_damage": {
+        "value": 0.0
       },
       "minecraft:behavior.ranged_attack": {
+        "priority": 1,
         "attack_radius": 64,
         "charge_shoot_trigger": 2,
         "charge_charged_trigger": 1
       },
-       "minecraft:follow_range": {
+      "minecraft:follow_range": {
         "value": 64,
         "max": 64
       },
@@ -51,11 +64,13 @@
         "priority": 2,
         "entity_types": [
           {
-            "filters": { "other_with_families": "player" },
-            "max_dist": 64
+            "filters": {"test" :  "is_family", "subject" : "other", "value" :  "player"},
+            "max_dist": 28
           }
         ],
         "must_see": true
+      },
+	    "minecraft:physics": {
       }
     }
   }

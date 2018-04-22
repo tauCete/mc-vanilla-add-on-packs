@@ -1,10 +1,10 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "components": {
       "minecraft:identifier": {
-        "id": "minecraft:thrownpotion"
+        "id": "minecraft:splash_potion"
       },
       "minecraft:collision_box": {
         "width": 0.25,
@@ -18,7 +18,10 @@
        },
         "power": 0.5,
         "gravity": 0.05,
-        "angleoffset": -20.0
+        "angleoffset": -20.0,
+        "hitSound": "glass"
+      },
+	    "minecraft:physics": {
       }
     }
   }

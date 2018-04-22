@@ -1,6 +1,6 @@
 {
   "minecraft:entity": {
-    "format_version": 0.1,
+    "format_version": "1.2.0",
 
     "component_groups": {
       "minecraft:pig_zombie_baby": {
@@ -43,10 +43,22 @@
       },
       "minecraft:nameable": {
       },
+      "minecraft:navigation.walk": {
+        "can_float": true,
+        "can_pass_doors": true,
+        "can_open_doors": true,
+		"avoid_portals": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
       "minecraft:fire_immune": true,
       "minecraft:burns_in_daylight": false,
       "minecraft:identifier": {
-        "id": "minecraft:pig_zombie"
+        "id": "minecraft:zombie_pigman"
       },
       "minecraft:type_family": {
         "family": [ "zombie_pigman", "undead", "monster" ]
@@ -62,8 +74,7 @@
         "max": 20
       },
       "minecraft:movement": {
-        "value": 0.23,
-        "max": 0.5
+        "value": 0.23
       },
       "minecraft:attack": {
         "damage": 5
@@ -82,7 +93,7 @@
       },
       "minecraft:behavior.melee_attack": {
         "priority": 3,
-        "speed_multiplier": 1,
+        "speed_multiplier": 1.5,
         "track_target": false
       },
       "minecraft:behavior.move_towards_restriction": {
@@ -102,6 +113,8 @@
       },
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
+      },
+	    "minecraft:physics": {
       }
 
     },
