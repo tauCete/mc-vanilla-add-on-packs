@@ -36,6 +36,11 @@
     "replicate": 2
   },
   {
+    "flipbook_texture": "textures/blocks/magma",
+    "atlas_tile": "magma",
+    "ticks_per_frame": 10
+  },
+  {
     "flipbook_texture": "textures/blocks/prismarine_rough",
     "atlas_tile": "prismarine",
     "ticks_per_frame": 300,
@@ -49,7 +54,65 @@
     "flipbook_texture": "textures/blocks/sea_lantern",
     "atlas_tile": "sea_lantern",
     "ticks_per_frame": 5
+  },
+  {
+    "flipbook_texture": "textures/blocks/command_block_front",
+    "atlas_tile": "command_block_front",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/command_block_back",
+    "atlas_tile": "command_block_back",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/command_block_side",
+    "atlas_tile": "command_block_side",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/command_block_conditional",
+    "atlas_tile": "command_block_conditional_side",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/repeating_command_block_front",
+    "atlas_tile": "command_block_repeating_front",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/repeating_command_block_back",
+    "atlas_tile": "command_block_repeating_back",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/repeating_command_block_side",
+    "atlas_tile": "command_block_repeating_side",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/repeating_command_block_conditional",
+    "atlas_tile": "command_block_repeating_conditional_side",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/chain_command_block_front",
+    "atlas_tile": "command_block_chain_front",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/chain_command_block_back",
+    "atlas_tile": "command_block_chain_back",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/chain_command_block_side",
+    "atlas_tile": "command_block_chain_side",
+    "ticks_per_frame": 10
+  },
+  {
+    "flipbook_texture": "textures/blocks/chain_command_block_conditional",
+    "atlas_tile": "command_block_chain_conditional_side",
+    "ticks_per_frame": 10
   }
 ]
-
-
