@@ -9,7 +9,7 @@ These are all for mcpe. AKA Bedrock. AKA Better together.
      		https://aka.ms/resourcepacktemplate
      		https://aka.ms/behaviorpacktemplate
 
-    	0.16   - Downloaded Octover 31st 2016
+    0.16   - Downloaded Octover 31st 2016
 	1.0    - Downloaded January 30th 2017
 	1.0.4  - Downloaded May 2017
 	1.2.6  - Downloaded December 2017
