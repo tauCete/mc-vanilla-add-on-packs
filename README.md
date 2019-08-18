@@ -5,6 +5,10 @@ These are all for mcpe. AKA Bedrock. AKA Better together.
 
 
 \pack-archives - A stored copy of the vanilla add-on packs as downloaded from minecraft.net.
+		
+		The offical add-ons page where you can download the vanila packs is here:
+		https://www.minecraft.net/en-us/addons/
+		
 		The direct links to the current version of the vanilla files are: 
      		https://aka.ms/resourcepacktemplate
      		https://aka.ms/behaviorpacktemplate
